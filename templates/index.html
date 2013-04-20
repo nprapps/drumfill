@@ -1,11 +1,9 @@
 {% extends '_base.html' %}
 
 {% block extra_css %}
-    {{ CSS.push('less/sotomayor.less') }}
 {% endblock %}
 
 {% block extra_head_js %}
-	{{ JS.push('js/lib/jquery.smooth-scroll.min.js') }}
 	{{ JS.push('js/lib/jquery.jplayer.js') }}
 	{{ JS.push('js/lib/popcorn.ie8.js') }}
 	{{ JS.push('js/lib/popcorn.js') }}
@@ -14,72 +12,25 @@
 {% block extra_head %}{% endblock %}
 
 
-{% block header_content %}
-<header>
+{% block wide_content %}
+<section id="home-screen">
     <div class="container">
         <div class="row">
             <div class="span12">
-                <h1>{{ COPY.content.header_title }}</h1>
-                <h2>{{ COPY.content.lorem_ipsum }}</h2>
-            </div>
-        </div>
-    </div>
-</header>
-{% endblock %}
-
-
-{% block content %}
-<h1>{{ PROJECT_NAME }}</h1>
-<div id="story-meta">
-    <p class="byline">by <span>{{ COPY.attribution.byline }}</span></p>
-    <p class="dateblock">
-        <span class="date">{{ COPY.attribution.pubdate }}</span>
-        <span class="time"> {{ COPY.attribution.pubtime }}</span>
-    </p>
-</div>
-
-<div id="audio">
-    <div id="pop-audio" class="jp-jplayer"></div>
-        <div id="jp_container_1" class="jp-audio">
-            <div class="jp-type-single">
-                <div class="jp-gui jp-interface">
-                    <div class="jp-controls">
-                        <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
-                        <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
-                    </div>
-                    <div class="jp-progress-container">
-                        <div class="jp-progress">
-                            <div class="jp-seek-bar">
-                                <div class="jp-play-bar"></div>
-                            </div>
-                        </div>
-                        <div id="chapter-title"></div>
-                        <ul id="slide-nav">
-                        </ul>
-                    </div>
-                    <div class="jp-current-time"></div>
-                </div>
+                <h2>Name That News</h2>
+                <p>Blah blah</p>
             </div>
         </div>
     </div>
 </div>
 
-<h2>Example COPY list</h2>
-<dl>
-    {% for row in COPY.example_list %}
-    <dt>{{ row.term }}</dt><dd>{{ row.definition }}</dd>
-    {% endfor %}
-</dl>
-
-<p id="template-example"></p>
-{% endblock %}
-
-
-{% block wide_content %}
-<div class="row">
-    <div class="span12">
-        <h2>{{ COPY.content.footer_title }}</h2>
-        <p>{{ COPY.content.lorem_ipsum }}</p>
+<section id="game-screen">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
