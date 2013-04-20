@@ -6,6 +6,12 @@ var $round_summary_screen;
 var $challenge_friend_screen;
 var $jplayer;
 
+var $quick_play_button;
+var $start_quest_button;
+var $challenge_friend_button;
+var $back_to_start_button;
+var $back_to_summary_button;
+
 // Index
 crossroads.addRoute('', function() {
     clear_screen();
@@ -42,6 +48,7 @@ function parse_hash(new_hash, old_hash) {
 }
 
 function clear_screen() {
+    $jplayer.jPlayer("stop");
     $sections.hide();
 }
 
@@ -51,12 +58,13 @@ function play_audio(filename) {
     }).jPlayer("play");
 }
 
-crossroads.routed.add(console.log, console);
-
 hasher.initialized.add(parse_hash);
 hasher.changed.add(parse_hash);
 
+hasher.prependHash = "";
+
 $(function() {
+    // jQuery refs
     $sections = $("section");
     $home_screen = $("#home-screen");
     $game_screen = $("#game-screen");
@@ -64,6 +72,39 @@ $(function() {
     $round_summary_screen = $("#round-summary-screen");
     $challenge_friend_screen = $("#challenge-friend-screen");
 
+    $quick_play_button = $("#quick-play");
+    $start_quest_button = $("#start-quest");
+    $challenge_friend_button = $("#challenge-friend");
+    $back_to_start_button = $("#back-to-start");
+    $back_to_summary_button = $("#back-to-summary");
+
+    // Event handlers
+    $quick_play_button.click(function() {
+        hasher.setHash("game");
+    });
+
+    $start_quest_button.click(function() {
+        hasher.setHash("quest");
+    });
+
+    // temp
+    $("#game-buttons button").click(function() {
+        hasher.setHash("round-summary");
+    });
+
+    $challenge_friend_button.click(function() {
+        hasher.setHash("challenge-friend");
+    });
+
+    $back_to_start_button.click(function() {
+        hasher.setHash("");
+    });
+
+    $back_to_summary_button.click(function() {
+        hasher.setHash("round-summary");
+    });
+
+    // Audio
     $jplayer = $("#pop-audio");
 
     $jplayer.jPlayer({
@@ -72,6 +113,7 @@ $(function() {
 
     var popcorn = Popcorn('#jp_audio_0');
 
+    // Start routing
     hasher.init();
 });
 
