@@ -1,10 +1,16 @@
 $(function() {
-    var context = $.extend(APP_CONFIG, {
-        'template_path': 'jst/example.html',
-        'config': JSON.stringify(APP_CONFIG, null, 4)
+    var $player = $("#pop-audio");
+
+    $player.jPlayer({
+        ready: function () {
+            $(this).jPlayer("setMedia", {
+                mp3: "audio/20090115_atc_13.mp3"
+            }).jPlayer("play");
+        },
+        swfPath: "js",
+        supplied: "mp3"
     });
 
-    var html = JST.example(context);
-
-    $('#template-example').html(html);
+    // associate jPlayer with Popcorn
+    var popcorn = Popcorn('#jp_audio_0');
 });
