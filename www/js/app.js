@@ -8,9 +8,9 @@ var $jplayer;
 
 var $quick_play_button;
 var $start_quest_button;
-
 var $challenge_friend_button;
 var $back_to_start_button;
+var $back_to_summary_button;
 
 // Index
 crossroads.addRoute('', function() {
@@ -48,6 +48,7 @@ function parse_hash(new_hash, old_hash) {
 }
 
 function clear_screen() {
+    $jplayer.jPlayer("stop");
     $sections.hide();
 }
 
@@ -73,9 +74,9 @@ $(function() {
 
     $quick_play_button = $("#quick-play");
     $start_quest_button = $("#start-quest");
-
     $challenge_friend_button = $("#challenge-friend");
     $back_to_start_button = $("#back-to-start");
+    $back_to_summary_button = $("#back-to-summary");
 
     // Event handlers
     $quick_play_button.click(function() {
@@ -86,12 +87,21 @@ $(function() {
         hasher.setHash("quest");
     });
 
+    // temp
+    $("#game-buttons button").click(function() {
+        hasher.setHash("round-summary");
+    });
+
     $challenge_friend_button.click(function() {
         hasher.setHash("challenge-friend");
     });
 
     $back_to_start_button.click(function() {
         hasher.setHash("");
+    });
+
+    $back_to_summary_button.click(function() {
+        hasher.setHash("round-summary");
     });
 
     // Audio
