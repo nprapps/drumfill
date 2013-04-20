@@ -22,7 +22,6 @@ crossroads.addRoute('quest', function() {
 crossroads.addRoute('game', function() {
     clear_screen();
     $game_screen.show();
-
     play_audio("audio/20090115_atc_13.mp3");
 });
 
