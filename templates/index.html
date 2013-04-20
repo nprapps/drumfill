@@ -13,41 +13,80 @@
 	{{ JS.push('js/lib/popcorn.code.js') }}
 {% endblock %}
 
-{% block extra_head %}{% endblock %}
-
-{% block header_content %}
-{% endblock %}
-
-{% block content %}
-<h1>{{ PROJECT_NAME }}</h1>
-
-<div id="audio">
-    <div id="pop-audio" class="jp-jplayer"></div>
-        <div id="jp_container_1" class="jp-audio">
-            <div class="jp-type-single">
-                <div class="jp-gui jp-interface">
-                    <div class="jp-controls">
-                        <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
-                        <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
-                    </div>
-                    <div class="jp-progress-container">
-                        <div class="jp-progress">
-                            <div class="jp-seek-bar">
-                                <div class="jp-play-bar"></div>
-                            </div>
-                        </div>
-                        <div id="chapter-title"></div>
-                        <ul id="slide-nav">
-                        </ul>
-                    </div>
-                    <div class="jp-current-time"></div>
-                </div>
+{% block wide_content %}
+<section id="home-screen">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h2>Name That News</h2>
+                <button class="btn">Quick Play</button>
+                <button class="btn">Start Your Quest</button>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+
+<section id="game-screen">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                
+
+                <div id="audio">
+                    <div id="pop-audio" class="jp-jplayer"></div>
+                        <div id="jp_container_1" class="jp-audio">
+                            <div class="jp-type-single">
+                                <div class="jp-gui jp-interface">
+                                    <div class="jp-controls">
+                                        <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
+                                        <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
+                                    </div>
+                                    <div class="jp-progress-container">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div class="jp-play-bar"></div>
+                                            </div>
+                                        </div>
+                                        <div id="chapter-title"></div>
+                                        <ul id="slide-nav">
+                                        </ul>
+                                    </div>
+                                    <div class="jp-current-time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-{% block wide_content %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="round-summary">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h2>You're Done!</h2>
+                <p>Blah blah</p>
+                <button class="btn">Challenge A Friend</button>
+                <button class="btn">Back To Start</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="challenge-friend">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h2>Challenge A Friend!</h2>
+                <button class="btn">Twitter</button>
+                <button class="btn">Facebook</button>
+                <button class="btn">Back To Summary</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
