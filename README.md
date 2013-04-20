@@ -1,14 +1,10 @@
 nprapps' Project Template
 =========================
 
-* [About this template](#about-this-template)
 * [Assumptions](#assumptions)
 * [What's in here?](#whats-in-here)
-* [Copy the template](#copy-the-template)
-* [Configure the project](#configure-the-project)
 * [Install requirements](#install-requirements)
 * [Project secrets](#project-secrets)
-* [Bootstrap issues](#bootstrap-issues)
 * [Adding a template/view](#adding-a-templateview)
 * [Run the project locally](#run-the-project-locally)
 * [Editing workflow](#editing-workflow)
@@ -20,13 +16,6 @@ nprapps' Project Template
 * [Deploy to EC2](#deploy-to-ec2)
 * [Install cron jobs](#install-cron-jobs)
 * [Install web services](#install-web-services)
-
-About this template
--------------------
-
-This template provides a a project skeleton suitable for any project that is to be served entirely as flat files. Facilities are provided for rendering html from data, compiling LESS into CSS, deploying to S3, installing cron jobs on servers, copy-editing via Google Spreadsheets and a whole raft of other stuff.
-
-**Please note:** This project is not intended to be a generic solution. We strongly encourage those who love the app-template to use it as a basis for their own project template. We have no plans to remove NPR-specific code from this project.
 
 Assumptions
 -----------
@@ -61,31 +50,6 @@ The project contains the following folders and important files:
 * ``render_utils.py`` -- Code supporting template rendering.
 * ``requirements.txt`` -- Python requirements.
 
-Copy the template
------------------
-
-Create a new repository on Github. Everywhere you see ``$NEW_PROJECT_NAME`` in the following script, replace it with the name of the repository you just created.
-
-```
-git clone git@github.com:nprapps/app-template.git $NEW_PROJECT_NAME
-cd $NEW_PROJECT_NAME
-
-# Optional: checkout an initial project branch
-# git checkout [init-map|init-table|init-chat]
-
-rm -rf .git
-git init
-git add * .gitignore
-git commit -am "Initial import from app-template."
-git remote add origin git@github.com:nprapps/$NEW_PROJECT_NAME.git
-git push -u origin master
-```
-
-Configure the project
----------------------
-
-Edit ``app_config.py`` and update ``PROJECT_NAME``, ``DEPLOYED_NAME``, ``REPOSITORY_NAME`` any other relevant configuration details.
-
 Install requirements
 --------------------
 
@@ -109,11 +73,6 @@ Project secrets
 ---------------
 
 Project secrets should **never** be stored in ``app_config.py`` or anywhere else in the repository. They will be leaked to the client if you do. Instead, always store passwords, keys, etc. in environment variables and document that they are needed here in the README.
-
-Bootstrap issues
-----------------
-
-The app-template can automatically setup your Github repo with our default labels and tickets by running ``fab bootstrap_issues``. You will be prompted for your Github username and password.
 
 Adding a template/view
 ----------------------

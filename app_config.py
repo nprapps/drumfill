@@ -9,9 +9,9 @@ They will be exposed to users. Use environment variables instead.
 
 import os
 
-PROJECT_NAME = 'App Template'
-PROJECT_SLUG = 'app-template'
-REPOSITORY_NAME = 'app-template'
+PROJECT_NAME = 'Drumfill'
+PROJECT_SLUG = 'drumfill'
+REPOSITORY_NAME = 'drumfill'
 
 PRODUCTION_S3_BUCKETS = ['apps.npr.org', 'apps2.npr.org']
 PRODUCTION_SERVERS = ['cron.nprapps.org']
@@ -23,7 +23,7 @@ S3_BUCKETS = []
 SERVERS = []
 DEBUG = True
 
-PROJECT_DESCRIPTION = 'An opinionated project template for client-side apps.'
+PROJECT_DESCRIPTION = 'Experimental audio news quiz for GEN/Editor\'s Lab Hackathon.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 COPY_GOOGLE_DOC_KEY = '0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc'
