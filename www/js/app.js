@@ -8,16 +8,19 @@ var $jplayer;
 
 // Index
 crossroads.addRoute('', function() {
+    clear_screen();
     $home_screen.show();
 });
 
 // Quest
 crossroads.addRoute('quest', function() {
+    clear_screen();
     $quest_screen.show();
 });
 
 // Turn
 crossroads.addRoute('game', function() {
+    clear_screen();
     $game_screen.show();
 
     play_audio("audio/20090115_atc_13.mp3");
@@ -25,11 +28,13 @@ crossroads.addRoute('game', function() {
 
 // Round over
 crossroads.addRoute('round-summary', function() {
+    clear_screen();
     $round_summary_screen.show();
 });
 
 // Challenge
 crossroads.addRoute('challenge-friend', function() {
+    clear_screen();
     $challenge_friend_screen.show();
 });
 
@@ -48,14 +53,12 @@ function play_audio(filename) {
 }
 
 crossroads.routed.add(console.log, console);
-crossroads.routed.add(function() {
-    clear_screen();
-});
 
 hasher.initialized.add(parse_hash);
 hasher.changed.add(parse_hash);
 
 $(function() {
+    $sections = $("section");
     $home_screen = $("#home-screen");
     $game_screen = $("#game-screen");
     $quest_screen = $("#quest-screen");
