@@ -14,7 +14,7 @@ var turn_page = crossroads.addRoute('turn', function() {
         ready: function () {
             $(this).jPlayer("setMedia", {
                 mp3: "audio/20090115_atc_13.mp3"
-            }).jPlayer("pause");
+            }).jPlayer("play");
         },
         swfPath: "js",
         supplied: "mp3"
