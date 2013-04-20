@@ -63,9 +63,9 @@ curl https://npmjs.org/install.sh | sh
 Then install the project requirements:
 
 ```
-cd $NEW_PROJECT_NAME
+cd drumfill
 npm install less universal-jst
-mkvirtualenv $NEW_PROJECT_NAME
+mkvirtualenv drumfill
 pip install -r requirements.txt
 ```
 
@@ -89,7 +89,7 @@ Run the project locally
 A flask app is used to run the project locally. It will automatically recompile templates and assets on demand.
 
 ```
-workon $NEW_PROJECT_NAME
+workon drumfill
 python app.py
 ```
 
@@ -156,7 +156,7 @@ Compile static assets
 Compile LESS to CSS, compile javascript templates to Javascript and minify all assets:
 
 ```
-workon $NEW_PROJECT_NAME
+workon drumfill
 fab render
 ```
 
