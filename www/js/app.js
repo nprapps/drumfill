@@ -108,10 +108,10 @@ function countdown_over() {
 function choice_clicked() {
     // Right answer
     if ($(this).text() == current_question.answer) {
-        if (countdown_timer) {
-            clearTimeout(countdown_timer);
-            countdown_timer = null;
-        }
+        clearTimeout(countdown_timer);
+        countdown_timer = null;
+
+        current_score += current_question_value;
 
         hasher.setHash("round-summary");
     // Wrong answer
