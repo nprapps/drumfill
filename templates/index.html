@@ -4,13 +4,6 @@
 {% endblock %}
 
 {% block extra_head_js %}
-	{{ JS.push('js/lib/signals.js') }}
-	{{ JS.push('js/lib/hasher.js') }}
-	{{ JS.push('js/lib/crossroads.js') }}
-	{{ JS.push('js/lib/jquery.jplayer.js') }}
-	{{ JS.push('js/lib/popcorn.ie8.js') }}
-	{{ JS.push('js/lib/popcorn.js') }}
-	{{ JS.push('js/lib/popcorn.code.js') }}
 {% endblock %}
 
 {% block wide_content %}
@@ -58,10 +51,10 @@
                     <div id="jp_container_1" class="jp-audio">
                         <div class="jp-type-single">
                             <div class="jp-gui jp-interface">
-                                <div class="jp-controls">
+                                <!--<div class="jp-controls">
                                     <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
                                     <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
-                                </div>
+                                </div>-->
                                 <div class="jp-progress-container">
                                     <div class="jp-progress">
                                         <div class="jp-seek-bar">
@@ -77,10 +70,10 @@
                 
                 <div id="game-buttons">
                     <ul>
-                        <li><button class="btn btn-blue btn-large btn-block">2000</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">2001</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">2002</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">2003</button></li>
+                        <li><button class="btn btn-blue btn-large btn-block">Choice 1</button></li>
+                        <li><button class="btn btn-blue btn-large btn-block">Choice 2</button></li>
+                        <li><button class="btn btn-blue btn-large btn-block">Choice 3</button></li>
+                        <li><button class="btn btn-blue btn-large btn-block">Choice 4</button></li>
                     </ul>
                 </div>
 
@@ -125,4 +118,15 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_foot_js %}
+	{{ JS.push('js/lib/signals.js') }}
+	{{ JS.push('js/lib/hasher.js') }}
+	{{ JS.push('js/lib/crossroads.js') }}
+	{{ JS.push('js/lib/jquery.jplayer.js') }}
+	{{ JS.push('js/lib/popcorn.ie8.js') }}
+	{{ JS.push('js/lib/popcorn.js') }}
+	{{ JS.push('js/lib/popcorn.code.js') }}
+	{{ JS.push('js/questions.js') }}
 {% endblock %}

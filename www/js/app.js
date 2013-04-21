@@ -1,3 +1,4 @@
+// jQuery refs
 var $sections;
 var $home_screen;
 var $question_screen;
@@ -11,6 +12,13 @@ var $start_quest_button;
 var $challenge_friend_button;
 var $back_to_start_button;
 var $back_to_summary_button;
+var $story_title;
+var $game_buttons;
+
+// Game state
+var current_question = null;
+var current_score = 0;
+var current_question_value = 0;
 
 // Index
 crossroads.addRoute('', function() {
@@ -27,6 +35,17 @@ crossroads.addRoute('quest', function() {
 // Turn
 crossroads.addRoute('game', function() {
     clear_screen();
+
+    current_question = QUESTIONS[0];
+
+    $story_title.text(current_question.title);
+
+    for (var i = 0; i < 4; i++) {
+        var choice = current_question.choices[i];
+
+        $($game_buttons[i]).text(choice);
+    }
+
     $game_screen.show();
 // sorry -- for my sanity    play_audio("audio/20090115_atc_13.mp3");
 });
@@ -43,6 +62,7 @@ crossroads.addRoute('challenge-friend', function() {
     $challenge_friend_screen.show();
 });
 
+// Utils
 function parse_hash(new_hash, old_hash) {
     crossroads.parse(new_hash);
 }
@@ -58,11 +78,6 @@ function play_audio(filename) {
     }).jPlayer("play");
 }
 
-hasher.initialized.add(parse_hash);
-hasher.changed.add(parse_hash);
-
-hasher.prependHash = "";
-
 $(function() {
     // jQuery refs
     $sections = $("section");
@@ -77,6 +92,8 @@ $(function() {
     $challenge_friend_button = $("#challenge-friend");
     $back_to_start_button = $("#back-to-start");
     $back_to_summary_button = $("#back-to-summary");
+    $story_title = $("#story-title");
+    $game_buttons = $("#game-buttons button");
 
     // Event handlers
     $quick_play_button.click(function() {
@@ -87,9 +104,14 @@ $(function() {
         hasher.setHash("quest");
     });
 
-    // temp
-    $("#game-buttons button").click(function() {
-        hasher.setHash("round-summary");
+    $game_buttons.click(function() {
+        // Right answer
+        if ($(this).text() == current_question.answer) {
+            hasher.setHash("round-summary");
+        // Wrong answer
+        } else {
+            alert("Wrong!");
+        }
     });
 
     $challenge_friend_button.click(function() {
@@ -114,6 +136,11 @@ $(function() {
     var popcorn = Popcorn('#jp_audio_0');
 
     // Start routing
+    hasher.initialized.add(parse_hash);
+    hasher.changed.add(parse_hash);
+
+    hasher.prependHash = "";
+
     hasher.init();
 });
 
