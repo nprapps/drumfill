@@ -133,7 +133,7 @@ section {
     position: relative;
 //    -webkit-animation: colorPulse 30s;
 
-    h4#round-status {
+    #round-status {
         font-size: 12px;
         font-weight: bold;
         color: #787878;
@@ -180,6 +180,43 @@ section {
             color: #555;
             line-height: 22px;
         }
+    }
+    #countdown-bar {
+        margin-bottom: 33px;
+
+        &:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
+        #countdown-bar-wrap {
+            width: 80%;
+            float: left;
+            height: 44px;
+            background-color: #ccc;
+        }
+        #countdown-bar-progress {
+            height: 44px;
+            background-color: #999;
+            width: 0;
+        }
+        #countdown-lives {
+            width: 18%;
+            float: right;
+            margin: 0 0 0 2%;
+            padding: 0;
+            list-style-type: none;
+            
+            li {
+                display: inline-block;
+                margin: 0;
+                line-height: 44px;
+                text-align: center;
+            }
+            i {
+                text-indent: -9999px;
+            }
+        }
+    }
+    #question {
+        font-weight: bold;
+        margin-bottom: 11px;
     }
     #story-info {
         margin-bottom: 11px;
