@@ -14,8 +14,10 @@
                 <div class="npr"><img src="img/npr_75x25.png" alt="NPR" /></div>
                 <h1><img src="img/inskeep-title.png" alt="{{ COPY.home.title }}" /></h1>
                 <p>{{ COPY.home.description }}</p>
-                <button class="btn btn-blue btn-large btn-block" id="quick-play">{{ COPY.home.quick_play }}</button>
-                <button class="btn btn-blue btn-large btn-block" id="start-quest">{{ COPY.home.start_quest }}</button>
+                <div class="button-group">
+                    <button class="btn btn-blue btn-large btn-block" id="quick-play">{{ COPY.home.quick_play }}</button>
+                    <button class="btn btn-blue btn-large btn-block" id="start-quest">{{ COPY.home.start_quest }}</button>
+                </div>
             </div>
         </div>
     </div>
@@ -81,8 +83,10 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-blue btn-large btn-block" id="next-turn">{{ COPY.game.next_turn }}<br/><small>{{ COPY.game.next_turn_encouragement }}</small></button>
-                    <button class="btn btn-blue btn-large btn-block" id="finish-round">{{ COPY.game.finish_round }}</button>
+                    <div class="button-group">
+                        <button class="btn btn-blue btn-large btn-block" id="next-turn">{{ COPY.game.next_turn }}<br/><small>{{ COPY.game.next_turn_encouragement }}</small></button>
+                        <button class="btn btn-blue btn-large btn-block" id="finish-round">{{ COPY.game.finish_round }}</button>
+                    </div>
                 </div>
                
                 <div id="turn-mode">
@@ -92,13 +96,13 @@
                             <div id="countdown-bar-progress"></div>
                         </div>
                         <ul id="countdown-lives">
-                            <li><i class="icon-star">Life</i></li>
-                            <li><i class="icon-star">Life</i></li>
-                            <li><i class="icon-star">Life</i></li>
+                            <li><i class="icon-star icon-white">Life</i></li>
+                            <li><i class="icon-star icon-white">Life</i></li>
+                            <li><i class="icon-star icon-white">Life</i></li>
                         </ul>
                     </div>
 
-                    <div id="game-buttons">
+                    <div id="game-buttons" class="button-group">
                         <button class="btn btn-blue btn-large btn-block">Choice 1</button>
                         <button class="btn btn-blue btn-large btn-block">Choice 2</button>
                         <button class="btn btn-blue btn-large btn-block">Choice 3</button>
@@ -129,9 +133,11 @@
                 <h2>{{ COPY.round_summary.title }}</h2>
                 <p>You scored <span class="score"></span> out of <span class="max-score"></span> possible.
                 <p>{{ COPY.round_summary.description }}</p>
-                <button class="btn btn-blue btn-large btn-block" id="play-again">{{ COPY.round_summary.play_again }}</button>
-                <button class="btn btn-blue btn-large btn-block" id="challenge-friend">{{ COPY.round_summary.challenge_friend }}</button>
-                <button class="btn btn-blue btn-large btn-block" id="back-to-start">{{ COPY.round_summary.back_to_start }}</button>
+                <div class="button-group">
+                    <button class="btn btn-blue btn-large btn-block" id="play-again">{{ COPY.round_summary.play_again }}</button>
+                    <button class="btn btn-blue btn-large btn-block" id="challenge-friend">{{ COPY.round_summary.challenge_friend }}</button>
+                    <button class="btn btn-blue btn-large btn-block" id="back-to-start">{{ COPY.round_summary.back_to_start }}</button>
+                </div>
             </div>
         </div>
     </div>
@@ -143,9 +149,11 @@
             <div class="span4">
                 <h2>{{ COPY.challenge_friend.title }}</h2>
                 <p>{{ COPY.challenge_friend.description }}</p>
-                <button class="btn btn-blue btn-large btn-block">{{ COPY.challenge_friend.twitter }}</button>
-                <button class="btn btn-blue btn-large btn-block">{{ COPY.challenge_friend.facebook }}</button>
-                <button class="btn btn-blue btn-large btn-block" id="back-to-summary">{{ COPY.challenge_friend.back_to_summary }}</button>
+                <div class="button-group">
+                    <button class="btn btn-blue btn-large btn-block">{{ COPY.challenge_friend.twitter }}</button>
+                    <button class="btn btn-blue btn-large btn-block">{{ COPY.challenge_friend.facebook }}</button>
+                    <button class="btn btn-blue btn-large btn-block" id="back-to-summary">{{ COPY.challenge_friend.back_to_summary }}</button>
+                </div>
             </div>
         </div>
     </div>
