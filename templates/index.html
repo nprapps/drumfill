@@ -29,14 +29,14 @@
                 <nav id="game-header">
                     <h3 id="quest-name">Quest Name</h3>
                     <div id="game-score">
-                        0 pts.
+                        <span class="score">0</span> pts.
                     </div>
                 </nav>
 
                 <h4 id="round-status">
                     Question
-                    <span id="round-item">5</span> of 
-                    <span id="round-total">10</span>
+                    <span id="turn-number">5</span> of 
+                    <span id="turn-count">10</span>
                 </h4>
                 
                 <div id="story-info">
@@ -88,8 +88,9 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-                <h2>Quest screen!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <h2>{{ COPY.quest.title }}</h2>
+                <p>{{ COPY.quest.description }}</p>
+                <button class="btn btn-blue btn-large btn-block">{{ COPY.quest.begin_round }}</button>
             </div>
         </div>
     </div>
@@ -112,10 +113,11 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-                <h2>Challenge A Friend!</h2>
-                <button class="btn btn-blue btn-large btn-block">Twitter</button>
-                <button class="btn btn-blue btn-large btn-block">Facebook</button>
-                <button class="btn btn-blue btn-large btn-block" id="back-to-summary">Back To Summary</button>
+                <h2>{{ COPY.challenge_friend.title }}</h2>
+                <p>{{ COPY.challenge_friend.description }}</p>
+                <button class="btn btn-blue btn-large btn-block">{{ COPY.challenge_friend.twitter }}</button>
+                <button class="btn btn-blue btn-large btn-block">{{ COPY.challenge_friend.facebook }}</button>
+                <button class="btn btn-blue btn-large btn-block" id="back-to-summary">{{ COPY.challenge_friend.back_to_summary }}</button>
             </div>
         </div>
     </div>
