@@ -4,16 +4,16 @@
 {% endblock %}
 
 {% block extra_head_js %}
-	{{ JS.push('js/lib/signals.js') }}
-	{{ JS.push('js/lib/hasher.js') }}
-	{{ JS.push('js/lib/crossroads.js') }}
-	{{ JS.push('js/lib/jquery.jplayer.js') }}
-	{{ JS.push('js/lib/popcorn.ie8.js') }}
-	{{ JS.push('js/lib/popcorn.js') }}
-	{{ JS.push('js/lib/popcorn.code.js') }}
 {% endblock %}
 
 {% block wide_content %}
+<!-- TODO: HIDE THIS WHEN #HOME-SCREEN IS ACTIVE -->
+<!-- TODO: LINK HEADER TO #HOME-SCREEN (or not) -->
+<nav id="game-header">
+    <img src="img/npr_75x25.png" alt="NPR" />
+    <h3>Name That News</h3>
+</nav>
+
 <section id="home-screen">
     <div class="container">
         <div class="row">
@@ -32,12 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-                <div class="game-header">
-                    <img src="img/npr_75x25.png" alt="NPR" />
-                    <h3>Name That News</h3>
-                </div>
-
-                <h2>Round 1: Random Stories</h2>
+                <h4>Round 1: Random Stories</h4>
                 <div id="round-status">
                     <span id="round-item">5</span> of 
                     <span id="round-total">10</span>
@@ -46,6 +41,7 @@
                 <div id="story-info">
                     <h3 id="story-title">Story Headline Goes Here</h3>
                     <p id="story-byline">Reporter: [Name Name]</p>
+                    <!-- TODO: only reveal program, airdate, duration after turn ends? -->
                     <p id="story-air">
                         <em><span id="story-program">Morning Edition</span></em>, 
                         <span id="story-date">April 20, 2010</span>
@@ -58,10 +54,10 @@
                     <div id="jp_container_1" class="jp-audio">
                         <div class="jp-type-single">
                             <div class="jp-gui jp-interface">
-                                <div class="jp-controls">
+                                <!--<div class="jp-controls">
                                     <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
                                     <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
-                                </div>
+                                </div>-->
                                 <div class="jp-progress-container">
                                     <div class="jp-progress">
                                         <div class="jp-seek-bar">
@@ -76,12 +72,10 @@
                 </div>
                 
                 <div id="game-buttons">
-                    <ul>
-                        <li><button class="btn btn-blue btn-large btn-block">2000</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">2001</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">2002</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">2003</button></li>
-                    </ul>
+                    <button class="btn btn-blue btn-large btn-block">Choice 1</button>
+                    <button class="btn btn-blue btn-large btn-block">Choice 2</button>
+                    <button class="btn btn-blue btn-large btn-block">Choice 3</button>
+                    <button class="btn btn-blue btn-large btn-block">Choice 4</button>
                 </div>
 
             </div>
@@ -94,7 +88,7 @@
         <div class="row">
             <div class="span4">
                 <h2>Quest screen!</h2>
-                <p>Blah blah</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
             </div>
         </div>
     </div>
@@ -105,9 +99,9 @@
         <div class="row">
             <div class="span4">
                 <h2>You're Done!</h2>
-                <p>Blah blah</p>
-                <button class="btn" id="challenge-friend">Challenge A Friend</button>
-                <button class="btn" id="back-to-start">Back To Start</button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <button class="btn btn-blue btn-large btn-block" id="challenge-friend">Challenge A Friend</button>
+                <button class="btn btn-blue btn-large btn-block" id="back-to-start">Back To Start</button>
             </div>
         </div>
     </div>
@@ -118,11 +112,19 @@
         <div class="row">
             <div class="span4">
                 <h2>Challenge A Friend!</h2>
-                <button class="btn">Twitter</button>
-                <button class="btn">Facebook</button>
-                <button class="btn" id="back-to-summary">Back To Summary</button>
+                <button class="btn btn-blue btn-large btn-block">Twitter</button>
+                <button class="btn btn-blue btn-large btn-block">Facebook</button>
+                <button class="btn btn-blue btn-large btn-block" id="back-to-summary">Back To Summary</button>
             </div>
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_foot_js %}
+	{{ JS.push('js/lib/signals.js') }}
+	{{ JS.push('js/lib/hasher.js') }}
+	{{ JS.push('js/lib/crossroads.js') }}
+	{{ JS.push('js/lib/jquery.jplayer.js') }}
+	{{ JS.push('js/questions.js') }}
 {% endblock %}
