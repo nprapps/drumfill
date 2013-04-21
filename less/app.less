@@ -121,12 +121,10 @@ section {
     }
 }
 
-@-webkit-keyframes fadeButton /* Safari and Chrome */
-{
+@-webkit-keyframes fadeButton {
     from { opacity: 1; }
     to { opacity: .3; }
 }
-
 #game-screen {
     position: relative;
 
@@ -231,6 +229,7 @@ section {
         margin-bottom: 11px;
 
         h3 {
+            font-size: 20px;
             font-family: Georgia, serif;
             color: #121212;
             margin: 0 0 11px 0;
@@ -251,6 +250,20 @@ section {
     }
     .span4 {
         padding-top: 0;
+    }
+    .turn-status {
+        padding-top: 11px;
+        border-bottom: 2px solid #fff;
+        margin-bottom: 22px;
+        
+        .turn-points {
+            font-weight: bold;
+            font-size: 36px;
+            color: #121212;
+            margin-bottom: 22px;
+        }
+        .point-explanation {
+        }
     }
     #next-turn {
         height:88px;
