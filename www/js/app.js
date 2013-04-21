@@ -45,8 +45,12 @@ crossroads.addRoute('game', function() {
 
     $story_title.text(current_question.title);
 
+    // Shallow copy
+    choices = current_question.choices.slice(0);
+    shuffle(choices);
+
     for (var i = 0; i < 4; i++) {
-        var choice = current_question.choices[i];
+        var choice = choices[i];
 
         $($game_buttons[i]).text(choice);
     }
@@ -74,6 +78,25 @@ crossroads.addRoute('challenge-friend', function() {
 // Utils
 function parse_hash(new_hash, old_hash) {
     crossroads.parse(new_hash);
+}
+
+function shuffle(in_array) {
+    var i = in_array.length;
+    var j;
+    var tempi;
+    var tempj;
+
+    if (i === 0) {
+        return false;
+    }
+  
+    while (--i) {
+        j = Math.floor( Math.random() * ( i + 1 ) );
+        tempi = in_array[i];
+        tempj = in_array[j];
+        in_array[i] = tempj;
+        in_array[j] = tempi;
+    }
 }
 
 function clear_screen() {
