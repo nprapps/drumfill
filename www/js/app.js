@@ -27,6 +27,11 @@ var $game_buttons;
 var $game_score;
 var $turn_number;
 var $turn_count;
+var $point_explanations;
+var $top_points;
+var $mid_points;
+var $low_points;
+var $no_points;
 
 // Game state
 var current_turn = 0;
@@ -159,6 +164,18 @@ function choice_clicked() {
         $points_won.text(current_question_value);
         $game_score.text(current_score);
 
+        $point_explanations.hide();
+
+        if (current_question_value == 3) {
+            $high_points.show();
+        } else if (current_question_value == 2) {
+            $mid_points.show();
+        } else if (current_question_value == 1) {
+            $low_points.show();
+        } else {
+            $no_points.show();
+        }
+
         $turn_mode.hide();
         $after_turn_mode.show();
     // Wrong answer
@@ -232,6 +249,11 @@ $(function() {
     $game_score = $("#game-score .score");
     $turn_number = $("#turn-number");
     $turn_count = $("#turn-count");
+    $point_explanations = $(".point-explanation");
+    $high_points = $("#high-points");
+    $mid_points = $("#mid-points");
+    $low_points = $("#low-points");
+    $no_points = $("#no-points");
 
     // Routing events 
     $quick_play_button.click(function() {
