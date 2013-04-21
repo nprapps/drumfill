@@ -32,6 +32,7 @@ var $top_points;
 var $mid_points;
 var $low_points;
 var $no_points;
+var $no_points_times_up;
 
 // Game state
 var current_turn = 0;
@@ -147,7 +148,7 @@ function countdown_over($hide_button) {
         $game_buttons.hide();
         countdown_timer = null;
 
-        $points_won.text(0);
+        score_points()
 
         $turn_mode.hide();
         $after_turn_mode.show();
@@ -160,21 +161,7 @@ function choice_clicked() {
         clearTimeout(countdown_timer);
         countdown_timer = null;
 
-        current_score += current_question_value;
-        $points_won.text(current_question_value);
-        $game_score.text(current_score);
-
-        $point_explanations.hide();
-
-        if (current_question_value == 3) {
-            $high_points.show();
-        } else if (current_question_value == 2) {
-            $mid_points.show();
-        } else if (current_question_value == 1) {
-            $low_points.show();
-        } else {
-            $no_points.show();
-        }
+        score_points()
 
         $turn_mode.hide();
         $after_turn_mode.show();
@@ -182,6 +169,24 @@ function choice_clicked() {
     } else {
         clearTimeout(countdown_timer);
         countdown_over($(this));
+    }
+}
+
+function score_points() {
+    current_score += current_question_value;
+    $points_won.text(current_question_value);
+    $game_score.text(current_score);
+
+    $point_explanations.hide();
+
+    if (current_question_value == 3) {
+        $top_points.show();
+    } else if (current_question_value == 2) {
+        $mid_points.show();
+    } else if (current_question_value == 1) {
+        $low_points.show();
+    } else {
+        $no_points.show();
     }
 }
 
@@ -250,10 +255,11 @@ $(function() {
     $turn_number = $("#turn-number");
     $turn_count = $("#turn-count");
     $point_explanations = $(".point-explanation");
-    $high_points = $("#high-points");
+    $top_points = $("#high-points");
     $mid_points = $("#mid-points");
     $low_points = $("#low-points");
     $no_points = $("#no-points");
+    $no_points_times_up = $("#no-points-times_up");
 
     // Routing events 
     $quick_play_button.click(function() {
