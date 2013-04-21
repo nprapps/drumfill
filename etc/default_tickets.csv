@@ -1,22 +1,17 @@
 title,body,labels
-Update ad tags,,Launch TODO
-Update Facebook Open Graph tags,,Launch TODO
-Update Twitter Card tags,,Launch TODO
-Update Twitter/Facebook links,,Launch TODO
-Get npr.org redirect (short URL),,Launch TODO
-Create Seamus shell page and request redirect,,Launch TODO
-Update widget analytics with project name,,Launch TODO
-Browser testing: IE8,,
-Browser testing: IE9,,
-Browser testing: Latest Firefox,,
-Browser testing: Latest Chrome,,
-Browser testing: Desktop Safari,,
-Device testing: iPhone Safari,,
-Device testing: iPhone Chrome/Webkit,,
-Device testing: iPad,,
-Device testing: Android phone,,
-Device testing: Android tablet,,
-Data download,,
-Link to repo,,
-Ad,,
-Double-check analytics code,,Launch TODO
+Turn screen: Current score (?),,
+Turn screen: Current progress w/in the round (turn 2 of 5),,
+Turn screen: Progress w/in a turn (countdown, fading colors?),,
+Turn screen: Make a choice -- right answer,,
+Turn screen: Make a choice -- wrong answer,,
+Turn screen: Choice fades with time,,
+Turn screen: Points fade with time,,
+Turn screen: Story title appears with time,,
+Post-turn screen: Right answer,,
+Post-turn screen: Wrong answer,,
+Post-turn screen: Go to next button,,
+Post-turn screen: Quit playing button,,
+Post-turn screen: Total score,,
+Post-turn screen: Explain the score earned during this turn,,
+Post-turn screen: Information about your opponent (Chris has 7 points by now!),,
+Post-turn screen: Progress bar(?) for the full-length piece,,
