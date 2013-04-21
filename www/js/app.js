@@ -1,3 +1,7 @@
+// Constants
+var COUNTDOWN = 10 * 1000;
+var MAX_QUESTION_VALUE = 3;
+
 // jQuery refs
 var $sections;
 var $home_screen;
@@ -19,6 +23,7 @@ var $game_buttons;
 var current_question = null;
 var current_score = 0;
 var current_question_value = 0;
+var countdown_timer = null;
 
 // Index
 crossroads.addRoute('', function() {
@@ -46,8 +51,12 @@ crossroads.addRoute('game', function() {
         $($game_buttons[i]).text(choice);
     }
 
+    current_question_value = MAX_QUESTION_VALUE;
+
     $game_screen.show();
-// sorry -- for my sanity    play_audio("audio/20090115_atc_13.mp3");
+
+    // See audio playing for more turn setup
+    play_audio("audio/20090115_atc_13.mp3");
 });
 
 // Round over
@@ -78,6 +87,44 @@ function play_audio(filename) {
     }).jPlayer("play");
 }
 
+function audio_playing() {
+    countdown_timer = setTimeout(countdown_over, COUNTDOWN);
+}
+
+function countdown_over() {
+    current_question_value -= 1;
+
+    if (current_question_value > 0) {
+        console.log("Max points now: " + current_question_value);
+
+        countdown_timer = setTimeout(countdown_over, COUNTDOWN);
+    } else {
+        console.log("Turn over, you lose");
+
+        countdown_timer = null;
+    }
+}
+
+function choice_clicked() {
+    // Right answer
+    if ($(this).text() == current_question.answer) {
+        if (countdown_timer) {
+            clearTimeout(countdown_timer);
+            countdown_timer = null;
+        }
+
+        hasher.setHash("round-summary");
+    // Wrong answer
+    } else {
+        clearTimeout(countdown_timer);
+        countdown_over();
+    }
+}
+
+function audio_ended() {
+    // TODO: prompt to go to next question
+}
+
 $(function() {
     // jQuery refs
     $sections = $("section");
@@ -95,23 +142,13 @@ $(function() {
     $story_title = $("#story-title");
     $game_buttons = $("#game-buttons button");
 
-    // Event handlers
+    // Routing events 
     $quick_play_button.click(function() {
         hasher.setHash("game");
     });
 
     $start_quest_button.click(function() {
         hasher.setHash("quest");
-    });
-
-    $game_buttons.click(function() {
-        // Right answer
-        if ($(this).text() == current_question.answer) {
-            hasher.setHash("round-summary");
-        // Wrong answer
-        } else {
-            alert("Wrong!");
-        }
     });
 
     $challenge_friend_button.click(function() {
@@ -125,15 +162,20 @@ $(function() {
     $back_to_summary_button.click(function() {
         hasher.setHash("round-summary");
     });
+    
+    // Gameplay events
+    $game_buttons.click(choice_clicked);
 
-    // Audio
+    // Audio setup
     $jplayer = $("#pop-audio");
 
     $jplayer.jPlayer({
         supplied: "mp3"
     });
 
-    var popcorn = Popcorn('#jp_audio_0');
+    // Audio events
+    $jplayer.bind($.jPlayer.event.play, audio_playing);
+    $jplayer.bind($.jPlayer.event.ended, audio_ended);
 
     // Start routing
     hasher.initialized.add(parse_hash);
