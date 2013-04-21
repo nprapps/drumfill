@@ -19,6 +19,7 @@ var $challenge_friend_button;
 var $back_to_start_button;
 var $back_to_summary_button;
 var $next_turn_button;
+var $finish_round_button;
 
 var $turn_mode;
 var $after_turn_mode;
@@ -232,6 +233,11 @@ function score_points() {
     } else {
         $no_points.show();
     }
+    
+    var at_end = current_turn == QUESTIONS.length;
+
+    $next_turn_button.toggle(!at_end);
+    $finish_round_button.toggle(at_end);
 }
 
 function next_turn() {
@@ -291,6 +297,7 @@ $(function() {
     $back_to_start_button = $("#back-to-start");
     $back_to_summary_button = $("#back-to-summary");
     $next_turn_button = $("#next-turn");
+    $finish_round_button = $("#finish-round");
 
     $turn_mode = $("#turn-mode");
     $after_turn_mode = $("#after-turn-mode");
@@ -337,6 +344,7 @@ $(function() {
     });
 
     $next_turn_button.click(next_turn);
+    $finish_round_button.click(next_turn);
     
     // Gameplay events
     $game_buttons.click(choice_clicked);
