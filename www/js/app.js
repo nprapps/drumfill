@@ -19,6 +19,7 @@ var $challenge_friend_button;
 var $back_to_start_button;
 var $back_to_summary_button;
 var $next_turn_button;
+var $finish_round_button;
 
 var $turn_mode;
 var $after_turn_mode;
@@ -37,6 +38,7 @@ var $no_points;
 var $no_points_times_up;
 var $countdown_bar;
 var $countdown_bar_progress;
+var $countdown_lives;
 
 // Game state
 var current_turn = 0;
@@ -132,7 +134,6 @@ function countdown_interval_over() {
         countdown_over();
     } else {
         var pct = elapsed / COUNTDOWN * 100;
-//        console.log(pct);
         $countdown_bar_progress.width(pct + "%");
 
         countdown_timer = setTimeout(countdown_interval_over, COUNTDOWN_INTERVAL);
@@ -143,8 +144,6 @@ function countdown_over($hide_button) {
     current_question_value -= 1;
 
     if (current_question_value > 0) {
-        console.log("Max points now: " + current_question_value);
-
         // Hide the clicked button
         if ($hide_button) {
             $hide_button.addClass('btn-invalid');
@@ -179,15 +178,20 @@ function countdown_over($hide_button) {
 }
 
 function reset_countdown_bar() {
-    $countdown_bar.removeClass("top-progress mid-progress low-progress");
+   $countdown_bar.removeClass("top-progress mid-progress low-progress");
     $countdown_bar_progress.width("0%");
 
+    $countdown_lives.removeClass("icon-star-empty");
+    $countdown_lives.addClass("icon-star");
+ 
     if (current_question_value == 3) {
         $countdown_bar.addClass("top-progress");
     } else if (current_question_value == 2) {
         $countdown_bar.addClass("mid-progress");
+        $countdown_lives.slice(0, 1).removeClass("icon-star").addClass("icon-star-empty");
     } else if (current_question_value == 1) {
         $countdown_bar.addClass("low-progress");
+        $countdown_lives.slice(0, 2).removeClass("icon-star").addClass("icon-star-empty");
     }
 }
 
@@ -227,6 +231,11 @@ function score_points() {
     } else {
         $no_points.show();
     }
+    
+    var at_end = current_turn == QUESTIONS.length;
+
+    $next_turn_button.toggle(!at_end);
+    $finish_round_button.toggle(at_end);
 }
 
 function next_turn() {
@@ -287,6 +296,7 @@ $(function() {
     $back_to_start_button = $("#back-to-start");
     $back_to_summary_button = $("#back-to-summary");
     $next_turn_button = $("#next-turn");
+    $finish_round_button = $("#finish-round");
 
     $turn_mode = $("#turn-mode");
     $after_turn_mode = $("#after-turn-mode");
@@ -305,6 +315,7 @@ $(function() {
     $no_points_times_up = $("#no-points-times_up");
     $countdown_bar = $("#countdown-bar");
     $countdown_bar_progress = $("#countdown-bar-progress");
+    $countdown_lives = $("#countdown-lives i");
 
     // Routing events 
     $quick_play_button.click(function() {
@@ -332,6 +343,7 @@ $(function() {
     });
 
     $next_turn_button.click(next_turn);
+    $finish_round_button.click(next_turn);
     
     // Gameplay events
     $game_buttons.click(choice_clicked);
