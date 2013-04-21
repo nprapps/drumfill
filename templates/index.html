@@ -39,37 +39,35 @@
                     <span id="turn-count">10</span>
                 </h4>
 
-                <div id="question">Question goes here?</div>
-
-                <div id="audio">
-                    <div id="pop-audio" class="jp-jplayer"></div>
-                    <div id="jp_container_1" class="jp-audio">
-                        <div class="jp-type-single">
-                            <div class="jp-gui jp-interface">
-                                <!--<div class="jp-controls">
-                                    <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
-                                    <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
-                                </div>-->
-                                <div class="jp-progress-container">
-                                    <div class="jp-progress">
-                                        <div class="jp-seek-bar">
-                                            <div class="jp-play-bar"></div>
+                <div id="after-turn-mode">
+                    <div id="audio">
+                        <div id="pop-audio" class="jp-jplayer"></div>
+                        <div id="jp_container_1" class="jp-audio">
+                            <div class="jp-type-single">
+                                <div class="jp-gui jp-interface">
+                                    <!--<div class="jp-controls">
+                                        <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i class="icon-play icon-white">play</i></a>
+                                        <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i class="icon-pause icon-white">pause</i></a>
+                                    </div>-->
+                                    <div class="jp-progress-container">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div class="jp-play-bar"></div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="jp-current-time"></div>
                                 </div>
-                                <div class="jp-current-time"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="after-turn-mode">
                     <p>+<span id="points-won"></span> points.</p>
-                    <p id="top-points">{{ COPY.game.top_points }}</p>
-                    <p id="mid-points">{{ COPY.game.mid_points }}</p>
-                    <p id="low-points">{{ COPY.game.low_points }}</p>
-                    <p id="no-points">{{ COPY.game.no_points }}</p>
-                    <p id="no-points-times-up">{{ COPY.game.no_points_times_up }}</p>
+                    <p id="top-points" class="point-explanation">{{ COPY.game.top_points }}</p>
+                    <p id="mid-points" class="point-explanation">{{ COPY.game.mid_points }}</p>
+                    <p id="low-points" class="point-explanation">{{ COPY.game.low_points }}</p>
+                    <p id="no-points" class="point-explanation">{{ COPY.game.no_points }}</p>
+                    <p id="no-points-times-up" class="point-explanation">{{ COPY.game.no_points_times_up }}</p>
 
                     <div id="story-info">
                         <h3 id="story-title">Story Headline Goes Here</h3>
@@ -85,6 +83,18 @@
                 </div>
                
                 <div id="turn-mode">
+                    <div id="question">Question goes here?</div>
+                    <div id="countdown-bar">
+                        <div id="countdown-bar-wrap">
+                            <div id="countdown-bar-progress"></div>
+                        </div>
+                        <ul id="countdown-lives">
+                            <li><i class="icon-star icon-white">Life</i></li>
+                            <li><i class="icon-star icon-white">Life</i></li>
+                            <li><i class="icon-star icon-white">Life</i></li>
+                        </ul>
+                    </div>
+
                     <div id="game-buttons">
                         <button class="btn btn-blue btn-large btn-block">Choice 1</button>
                         <button class="btn btn-blue btn-large btn-block">Choice 2</button>
