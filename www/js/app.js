@@ -268,12 +268,11 @@ function next_turn() {
         // Don't show buttons until audio starts playing
         $game_buttons.hide();
 
+        current_question_value = MAX_QUESTION_VALUE;
         reset_countdown_bar();
 
-        current_question_value = MAX_QUESTION_VALUE;
-
         // See audio playing for more turn setup
-        play_audio("audio/20090115_atc_13.mp3");
+        play_audio("audio/" + current_question.audio);
     } else {
         hasher.setHash("round-summary");
     }
@@ -364,7 +363,7 @@ $(function() {
         supplied: "mp3"
     });
 
-    $jplayer.jPlayer("mute", true);
+    //$jplayer.jPlayer("mute", true);
 
     // Audio events
     $jplayer.bind($.jPlayer.event.play, audio_playing);
