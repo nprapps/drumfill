@@ -16,6 +16,12 @@ var $start_quest_button;
 var $challenge_friend_button;
 var $back_to_start_button;
 var $back_to_summary_button;
+var $next_turn_button;
+
+var $turn_mode;
+var $after_turn_mode;
+var $question;
+var $points_won;
 var $story_title;
 var $game_buttons;
 var $game_score;
@@ -136,7 +142,10 @@ function countdown_over($hide_button) {
         $game_buttons.hide();
         countdown_timer = null;
 
-        next_turn();
+        $points_won.text(0);
+
+        $turn_mode.hide();
+        $after_turn_mode.show();
     }
 }
 
@@ -147,6 +156,7 @@ function choice_clicked() {
         countdown_timer = null;
 
         current_score += current_question_value;
+        $points_won.text(current_question_value);
         $game_score.text(current_score);
 
         next_turn();
@@ -164,6 +174,10 @@ function next_turn() {
         $turn_number.text(current_turn);
         current_question = QUESTIONS[current_turn - 1];
 
+        $after_turn_mode.hide();
+        $turn_mode.show();
+
+        $question.text(current_question.question);
         $story_title.text(current_question.title);
 
         // Shallow copy
@@ -206,6 +220,12 @@ $(function() {
     $challenge_friend_button = $("#challenge-friend");
     $back_to_start_button = $("#back-to-start");
     $back_to_summary_button = $("#back-to-summary");
+    $next_turn_button = $("#next-turn");
+
+    $turn_mode = $("#turn-mode");
+    $after_turn_mode = $("#after-turn-mode");
+    $question = $("#question");
+    $points_won = $("#points-won");
     $story_title = $("#story-title");
     $game_buttons = $("#game-buttons button");
     $game_score = $("#game-score .score");
@@ -232,6 +252,8 @@ $(function() {
     $back_to_summary_button.click(function() {
         hasher.setHash("round-summary");
     });
+
+    $next_turn_button.click(next_turn);
     
     // Gameplay events
     $game_buttons.click(choice_clicked);
