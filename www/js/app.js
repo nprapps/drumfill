@@ -125,7 +125,11 @@ function countdown_over($hide_button) {
 
         // Hide the clicked button
         if ($hide_button) {
-            $hide_button.hide();
+            $hide_button.addClass('btn-invalid');
+            $hide_button.animate( { 
+                opacity: .2
+            }, 500);
+            $hide_button.unbind('click');
         // Hide a random button
         } else {
             var $wrong_buttons = [];
