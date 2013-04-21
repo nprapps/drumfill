@@ -55,6 +55,9 @@ crossroads.addRoute('game', function() {
         $($game_buttons[i]).text(choice);
     }
 
+    // Don't show buttons until audio starts playing
+    $game_buttons.hide();
+
     current_question_value = MAX_QUESTION_VALUE;
 
     $game_screen.show();
@@ -111,17 +114,38 @@ function play_audio(filename) {
 }
 
 function audio_playing() {
+    $game_buttons.show();
     countdown_timer = setTimeout(countdown_over, COUNTDOWN);
 }
 
-function countdown_over() {
+function countdown_over($hide_button) {
     current_question_value -= 1;
 
     if (current_question_value > 0) {
         console.log("Max points now: " + current_question_value);
 
+        // Hide the clicked button
+        if ($hide_button) {
+            $hide_button.hide();
+        // Hide a random button
+        } else {
+            var $wrong_buttons = [];
+
+            for (i in $game_buttons) {
+                $button = $game_buttons.eq(i);
+                if ($button.is(":visible") && $button.text() !=current_question.answer) {
+                    $wrong_buttons.push($button);
+                }
+            }
+
+            shuffle($wrong_buttons);
+
+            $wrong_buttons[0].hide();
+        }
+
         countdown_timer = setTimeout(countdown_over, COUNTDOWN);
     } else {
+        $game_buttons.hide();
         console.log("Turn over, you lose");
 
         countdown_timer = null;
@@ -140,7 +164,7 @@ function choice_clicked() {
     // Wrong answer
     } else {
         clearTimeout(countdown_timer);
-        countdown_over();
+        countdown_over($(this));
     }
 }
 
@@ -195,6 +219,8 @@ $(function() {
     $jplayer.jPlayer({
         supplied: "mp3"
     });
+
+    $jplayer.jPlayer("mute", true);
 
     // Audio events
     $jplayer.bind($.jPlayer.event.play, audio_playing);
