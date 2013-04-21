@@ -255,7 +255,7 @@ $(function() {
     $turn_number = $("#turn-number");
     $turn_count = $("#turn-count");
     $point_explanations = $(".point-explanation");
-    $top_points = $("#high-points");
+    $top_points = $("#top-points");
     $mid_points = $("#mid-points");
     $low_points = $("#low-points");
     $no_points = $("#no-points");
