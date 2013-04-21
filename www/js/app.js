@@ -29,6 +29,7 @@ var $points_won;
 var $story_title;
 var $game_buttons;
 var $game_score;
+var $max_score;
 var $turn_number;
 var $turn_count;
 var $point_explanations;
@@ -68,6 +69,7 @@ crossroads.addRoute('game', function() {
     current_turn = 0;
     current_score = 0;
     $turn_count.text(QUESTIONS.length);
+    $max_score.text(QUESTIONS.length * MAX_QUESTION_VALUE)
 
     next_turn();
 
@@ -308,6 +310,7 @@ $(function() {
     $story_title = $("#story-title");
     $game_buttons = $("#game-buttons button");
     $game_score = $(".score");
+    $max_score = $(".max-score");
     $turn_number = $("#turn-number");
     $turn_count = $("#turn-count");
     $point_explanations = $(".point-explanation");
