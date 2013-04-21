@@ -12,10 +12,10 @@
         <div class="row">
             <div class="span4">
                 <div class="npr"><img src="img/npr_75x25.png" alt="NPR" /></div>
-                <h1>{{ COPY.app.title }}</h1>
-                <p>{{ COPY.app.description }}</p>
-                <button class="btn btn-blue btn-large btn-block" id="quick-play">Quick Play</button>
-                <button class="btn btn-blue btn-large btn-block" id="start-quest">Start Your Quest</button>
+                <h1>{{ COPY.home.title }}</h1>
+                <p>{{ COPY.home.description }}</p>
+                <button class="btn btn-blue btn-large btn-block" id="quick-play">{{ COPY.home.quick_play }}</button>
+                <button class="btn btn-blue btn-large btn-block" id="start-quest">{{ COPY.home.start_quest }}</button>
             </div>
         </div>
     </div>
@@ -99,10 +99,10 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-                <h2>You're Done!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                <button class="btn btn-blue btn-large btn-block" id="challenge-friend">Challenge A Friend</button>
-                <button class="btn btn-blue btn-large btn-block" id="back-to-start">Back To Start</button>
+                <h2>{{ COPY.round-summary.title }}</h2>
+                <p>{{ COPY.round-summary.description }}</p>
+                <button class="btn btn-blue btn-large btn-block" id="challenge-friend">{{ COPY.round-summary.challenge_friend }}</button>
+                <button class="btn btn-blue btn-large btn-block" id="back-to-start">{{ COPY.round-summary.back_to_start }}</button>
             </div>
         </div>
     </div>
