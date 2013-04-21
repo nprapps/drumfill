@@ -40,6 +40,23 @@
                 </h4>
 
                 <div id="after-turn-mode">
+                    <p>+<span id="points-won"></span> points.</p>
+                    <p id="top-points" class="point-explanation">{{ COPY.game.top_points }}</p>
+                    <p id="mid-points" class="point-explanation">{{ COPY.game.mid_points }}</p>
+                    <p id="low-points" class="point-explanation">{{ COPY.game.low_points }}</p>
+                    <p id="no-points" class="point-explanation">{{ COPY.game.no_points }}</p>
+                    <p id="no-points-times-up" class="point-explanation">{{ COPY.game.no_points_times_up }}</p>
+
+                    <div id="story-info">
+                        <h3 id="story-title">Story Headline Goes Here</h3>
+                        <p id="story-byline">Reporter: [Name Name]</p>
+                        <p id="story-air">
+                            <em><span id="story-program">Morning Edition</span></em>, 
+                            <span id="story-date">April 20, 2010</span>
+                        </p>
+                        <p id="duration">3 min, 20 sec</p>
+                    </div>
+
                     <div id="audio">
                         <div id="pop-audio" class="jp-jplayer"></div>
                         <div id="jp_container_1" class="jp-audio">
@@ -62,24 +79,7 @@
                         </div>
                     </div>
 
-                    <p>+<span id="points-won"></span> points.</p>
-                    <p id="top-points" class="point-explanation">{{ COPY.game.top_points }}</p>
-                    <p id="mid-points" class="point-explanation">{{ COPY.game.mid_points }}</p>
-                    <p id="low-points" class="point-explanation">{{ COPY.game.low_points }}</p>
-                    <p id="no-points" class="point-explanation">{{ COPY.game.no_points }}</p>
-                    <p id="no-points-times-up" class="point-explanation">{{ COPY.game.no_points_times_up }}</p>
-
-                    <div id="story-info">
-                        <h3 id="story-title">Story Headline Goes Here</h3>
-                        <p id="story-byline">Reporter: [Name Name]</p>
-                        <p id="story-air">
-                            <em><span id="story-program">Morning Edition</span></em>, 
-                            <span id="story-date">April 20, 2010</span>
-                        </p>
-                        <p id="duration">3 min, 20 sec</p>
-                    </div>
-
-                    <button class="btn btn-blue btn-large btn-block" id="next-turn">Next question</button>
+                    <button class="btn btn-blue btn-large btn-block" id="next-turn">{{ COPY.game.next_turn }}<br/><small>{{ COPY.game.next_turn_encouragement }}</small></button>
                 </div>
                
                 <div id="turn-mode">
