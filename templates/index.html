@@ -7,16 +7,6 @@
 {% endblock %}
 
 {% block wide_content %}
-<!-- TODO: HIDE THIS WHEN #HOME-SCREEN IS ACTIVE -->
-<!-- TODO: LINK HEADER TO #HOME-SCREEN (or not) -->
-<nav id="game-header">
-    <img src="img/npr_75x25.png" alt="NPR" />
-    <h3>Name That News</h3>
-    <div id="game-score">
-        0 pts.
-    </div>
-</nav>
-
 <section id="home-screen">
     <div class="container">
         <div class="row">
@@ -35,11 +25,19 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-                <h4>Round 1: Random Stories</h4>
-                <div id="round-status">
+
+                <nav id="game-header">
+                    <h3 id="quest-name">Quest Name</h3>
+                    <div id="game-score">
+                        0 pts.
+                    </div>
+                </nav>
+
+                <h4 id="round-status">
+                    Question
                     <span id="round-item">5</span> of 
                     <span id="round-total">10</span>
-                </div>
+                </h4>
                 
                 <div id="story-info">
                     <h3 id="story-title">Story Headline Goes Here</h3>
