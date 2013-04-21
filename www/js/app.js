@@ -18,8 +18,12 @@ var $back_to_start_button;
 var $back_to_summary_button;
 var $story_title;
 var $game_buttons;
+var $game_score;
+var $turn_number;
+var $turn_count;
 
 // Game state
+var current_turn = 0;
 var current_question = null;
 var current_score = 0;
 var current_question_value = 0;
@@ -41,29 +45,13 @@ crossroads.addRoute('quest', function() {
 crossroads.addRoute('game', function() {
     clear_screen();
 
-    current_question = QUESTIONS[0];
+    current_turn = 0;
+    current_score = 0;
+    $turn_count.text(QUESTIONS.length);
 
-    $story_title.text(current_question.title);
-
-    // Shallow copy
-    choices = current_question.choices.slice(0);
-    shuffle(choices);
-
-    for (var i = 0; i < 4; i++) {
-        var choice = choices[i];
-
-        $($game_buttons[i]).text(choice);
-    }
-
-    // Don't show buttons until audio starts playing
-    $game_buttons.hide();
-
-    current_question_value = MAX_QUESTION_VALUE;
+    next_turn();
 
     $game_screen.show();
-
-    // See audio playing for more turn setup
-    play_audio("audio/20090115_atc_13.mp3");
 });
 
 // Round over
@@ -146,9 +134,9 @@ function countdown_over($hide_button) {
         countdown_timer = setTimeout(countdown_over, COUNTDOWN);
     } else {
         $game_buttons.hide();
-        console.log("Turn over, you lose");
-
         countdown_timer = null;
+
+        next_turn();
     }
 }
 
@@ -159,12 +147,44 @@ function choice_clicked() {
         countdown_timer = null;
 
         current_score += current_question_value;
+        $game_score.text(current_score);
 
-        hasher.setHash("round-summary");
+        next_turn();
     // Wrong answer
     } else {
         clearTimeout(countdown_timer);
         countdown_over($(this));
+    }
+}
+
+function next_turn() {
+    current_turn += 1;
+
+    if (current_turn <= QUESTIONS.length) {
+        $turn_number.text(current_turn);
+        current_question = QUESTIONS[current_turn - 1];
+
+        $story_title.text(current_question.title);
+
+        // Shallow copy
+        choices = current_question.choices.slice(0);
+        shuffle(choices);
+
+        for (var i = 0; i < 4; i++) {
+            var choice = choices[i];
+
+            $($game_buttons[i]).text(choice);
+        }
+
+        // Don't show buttons until audio starts playing
+        $game_buttons.hide();
+
+        current_question_value = MAX_QUESTION_VALUE;
+
+        // See audio playing for more turn setup
+        play_audio("audio/20090115_atc_13.mp3");
+    } else {
+        hasher.setHash("round-summary");
     }
 }
 
@@ -188,6 +208,9 @@ $(function() {
     $back_to_summary_button = $("#back-to-summary");
     $story_title = $("#story-title");
     $game_buttons = $("#game-buttons button");
+    $game_score = $("#game-score .score");
+    $turn_number = $("#turn-number");
+    $turn_count = $("#turn-count");
 
     // Routing events 
     $quick_play_button.click(function() {
