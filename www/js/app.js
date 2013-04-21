@@ -47,7 +47,7 @@ crossroads.addRoute('game', function() {
     }
 
     $game_screen.show();
-// sorry -- for my sanity    play_audio("audio/20090115_atc_13.mp3");
+//    play_audio("audio/20090115_atc_13.mp3");
 });
 
 // Round over
