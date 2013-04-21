@@ -294,6 +294,27 @@ section {
     background: #121212 url('@{img-root}/danny-mirror.png') no-repeat;
     background-position: 50% 0;
     background-size: cover;
+    
+    img.tote-bag {
+        display: block;
+        width: 100px;
+        float: right;
+        margin-top: -22px;
+        margin-right: 10px;
+    }
+    #buy-bag {
+        line-height: 1.5;
+        padding-top: 26px;
+        padding-bottom: 11px;
+        height: auto;
+        padding-right: 120px;
+
+        &:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
+    }
+    #challenge-friend {
+        clear: both;
+    }
+    
 }
 
 #challenge-friend-screen {
