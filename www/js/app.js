@@ -20,6 +20,7 @@ var $back_to_start_button;
 var $back_to_summary_button;
 var $next_turn_button;
 var $finish_round_button;
+var $play_again_button;
 
 var $turn_mode;
 var $after_turn_mode;
@@ -298,6 +299,7 @@ $(function() {
     $back_to_summary_button = $("#back-to-summary");
     $next_turn_button = $("#next-turn");
     $finish_round_button = $("#finish-round");
+    $play_again_button = $("#play-again");
 
     $turn_mode = $("#turn-mode");
     $after_turn_mode = $("#after-turn-mode");
@@ -305,7 +307,7 @@ $(function() {
     $points_won = $("#points-won");
     $story_title = $("#story-title");
     $game_buttons = $("#game-buttons button");
-    $game_score = $("#game-score .score");
+    $game_score = $(".score");
     $turn_number = $("#turn-number");
     $turn_count = $("#turn-count");
     $point_explanations = $(".point-explanation");
@@ -341,6 +343,10 @@ $(function() {
 
     $back_to_summary_button.click(function() {
         hasher.setHash("round-summary");
+    });
+
+    $play_again_button.click(function() {
+        hasher.setHash("game");
     });
 
     $next_turn_button.click(next_turn);
