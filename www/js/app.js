@@ -25,8 +25,11 @@ var $play_again_button;
 var $turn_mode;
 var $after_turn_mode;
 var $question;
+var $answer;
 var $points_won;
 var $story_title;
+var $story_program;
+var $story_date;
 var $game_buttons;
 var $game_score;
 var $max_score;
@@ -253,7 +256,10 @@ function next_turn() {
         $turn_mode.show();
 
         $question.text(current_question.question);
+        $answer.text(current_question.answer);
         $story_title.text(current_question.title);
+        $story_program.text(current_question.program);
+        $story_date.text(current_question.date);
 
         // Shallow copy
         choices = current_question.choices.slice(0);
@@ -304,8 +310,11 @@ $(function() {
     $turn_mode = $("#turn-mode");
     $after_turn_mode = $("#after-turn-mode");
     $question = $("#question");
+    $answer = $("#correct-answer .answer");
     $points_won = $("#points-won");
     $story_title = $("#story-title");
+    $story_program = $("#story-program");
+    $story_date = $("#story-date");
     $game_buttons = $("#game-buttons button");
     $game_score = $(".score");
     $max_score = $(".max-score");
