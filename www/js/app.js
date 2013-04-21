@@ -1,5 +1,6 @@
 // Constants
 var COUNTDOWN = 10 * 1000;
+var COUNTDOWN_INTERVAL = COUNTDOWN / 200;
 var MAX_QUESTION_VALUE = 3;
 
 // jQuery refs
@@ -33,6 +34,8 @@ var $mid_points;
 var $low_points;
 var $no_points;
 var $no_points_times_up;
+var $countdown_bar;
+var $countdown_bar_progress;
 
 // Game state
 var current_turn = 0;
@@ -40,6 +43,7 @@ var current_question = null;
 var current_score = 0;
 var current_question_value = 0;
 var countdown_timer = null;
+var countdown_start = null;
 
 // Index
 crossroads.addRoute('', function() {
@@ -115,7 +119,23 @@ function play_audio(filename) {
 
 function audio_playing() {
     $game_buttons.show();
-    countdown_timer = setTimeout(countdown_over, COUNTDOWN);
+    countdown_start = Date.now();
+    countdown_timer = setTimeout(countdown_interval_over, COUNTDOWN_INTERVAL);
+}
+
+function countdown_interval_over() {
+    var now = Date.now();
+    var elapsed = now - countdown_start;
+
+    if (elapsed > COUNTDOWN) {
+        countdown_over();
+    } else {
+        var pct = elapsed / COUNTDOWN * 100;
+        console.log(pct);
+        $countdown_bar_progress.width(pct + "%");
+
+        countdown_timer = setTimeout(countdown_interval_over, COUNTDOWN_INTERVAL);
+    }
 }
 
 function countdown_over($hide_button) {
@@ -143,7 +163,10 @@ function countdown_over($hide_button) {
             $wrong_buttons[0].hide();
         }
 
-        countdown_timer = setTimeout(countdown_over, COUNTDOWN);
+        reset_countdown_bar();
+
+        countdown_start = Date.now();
+        countdown_timer = setTimeout(countdown_interval_over, COUNTDOWN_INTERVAL);
     } else {
         $game_buttons.hide();
         countdown_timer = null;
@@ -152,6 +175,19 @@ function countdown_over($hide_button) {
 
         $turn_mode.hide();
         $after_turn_mode.show();
+    }
+}
+
+function reset_countdown_bar() {
+    $countdown_bar.removeClass("top-progress mid-progress low-progress");
+    $countdown_bar_progress.width("0%");
+
+    if (current_question_value == 3) {
+        $countdown_bar.addClass("top-progress");
+    } else if (current_question_value == 2) {
+        $countdown_bar.addClass("mid-progress");
+    } else if (current_question_value == 1) {
+        $countdown_bar.addClass("low-progress");
     }
 }
 
@@ -216,6 +252,8 @@ function next_turn() {
         // Don't show buttons until audio starts playing
         $game_buttons.hide();
 
+        reset_countdown_bar();
+
         current_question_value = MAX_QUESTION_VALUE;
 
         // See audio playing for more turn setup
@@ -260,6 +298,8 @@ $(function() {
     $low_points = $("#low-points");
     $no_points = $("#no-points");
     $no_points_times_up = $("#no-points-times_up");
+    $countdown_bar = $("#countdown-bar");
+    $countdown_bar_progress = $("#countdown-bar-progress");
 
     // Routing events 
     $quick_play_button.click(function() {
