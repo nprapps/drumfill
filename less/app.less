@@ -176,31 +176,20 @@ section {
             line-height: 22px;
         }
     }
-    #countdown-bar {
+    .countdown {
         margin-bottom: 33px;
 
         &:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
-        &.top-progress {
-            #countdown-bar-wrap { background-color: ; }
-            #countdown-bar-progress { background-color: ; }
-        }
-        &.mid-progress { 
-            #countdown-bar-wrap { background-color: ; }
-            #countdown-bar-progress { background-color: ; }
-        }
-        &.low-progress { 
-            #countdown-bar-wrap { background-color: ; }
-            #countdown-bar-progress { background-color: ; }
-        }
         #countdown-bar-wrap {
             width: 80%;
             float: left;
             height: 44px;
-            background-color: #ccc;
+            background-color: #cdcdcd;
         }
         #countdown-bar-progress {
             height: 44px;
-            background-color: #999;
+            background-color: #EFC637;
+            -webkit-animation: flashBar .5s;
             width: 0;
         }
         #countdown-lives {
@@ -218,6 +207,21 @@ section {
             }
             i {
                 text-indent: -9999px;
+            }
+        }
+        &.top-progress {
+            #countdown-bar-progress { 
+                background-color: #EFC637;
+            }
+        }
+        &.mid-progress { 
+            #countdown-bar-progress { 
+                background-color: #E38D2C;
+            }
+        }
+        &.low-progress { 
+            #countdown-bar-progress { 
+                background-color: #D8472B;
             }
         }
     }
