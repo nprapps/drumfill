@@ -132,7 +132,7 @@ function countdown_interval_over() {
         countdown_over();
     } else {
         var pct = elapsed / COUNTDOWN * 100;
-        console.log(pct);
+//        console.log(pct);
         $countdown_bar_progress.width(pct + "%");
 
         countdown_timer = setTimeout(countdown_interval_over, COUNTDOWN_INTERVAL);
@@ -148,24 +148,19 @@ function countdown_over($hide_button) {
         // Hide the clicked button
         if ($hide_button) {
             $hide_button.addClass('btn-invalid');
-            $hide_button.animate( { 
-                opacity: .2
-            }, 500);
-            $hide_button.unbind('click');
-        // Hide a random button
+            // Hide a random button
         } else {
             var $wrong_buttons = [];
+            var $num_buttons = $game_buttons.length;
 
-            for (i in $game_buttons) {
+            for (var i = 0; i < $num_buttons; i++) {
                 $button = $game_buttons.eq(i);
-                if ($button.is(":visible") && $button.text() !=current_question.answer) {
+                if (($button.hasClass('btn-invalid') == false) && ($button.text() !=current_question.answer)) {
                     $wrong_buttons.push($button);
                 }
             }
-
             shuffle($wrong_buttons);
-
-            $wrong_buttons[0].hide();
+            $wrong_buttons[0].addClass('btn-invalid');
         }
 
         reset_countdown_bar();
@@ -197,6 +192,9 @@ function reset_countdown_bar() {
 }
 
 function choice_clicked() {
+    if ($(this).hasClass('btn-invalid')) {
+        return;
+    }
     // Right answer
     if ($(this).text() == current_question.answer) {
         clearTimeout(countdown_timer);
@@ -233,6 +231,7 @@ function score_points() {
 
 function next_turn() {
     current_turn += 1;
+    $game_buttons.removeClass('btn-invalid');
 
     if (current_turn <= QUESTIONS.length) {
         $turn_number.text(current_turn);

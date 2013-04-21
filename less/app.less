@@ -121,6 +121,12 @@ section {
     }
 }
 
+@-webkit-keyframes fadeButton /* Safari and Chrome */
+{
+    from { opacity: 1; }
+    to { opacity: .3; }
+}
+
 #game-screen {
     position: relative;
 
@@ -238,6 +244,9 @@ section {
     }
     .btn.btn-invalid {
         background-color: #D8472B;
+        opacity: .3;
+        -webkit-animation: fadeButton .5s;
+
         &:hover { cursor: default; }
     }
     .span4 {
