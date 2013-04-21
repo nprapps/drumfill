@@ -13,6 +13,7 @@ var $jplayer;
 
 var $quick_play_button;
 var $start_quest_button;
+var $begin_quest_button;
 var $challenge_friend_button;
 var $back_to_start_button;
 var $back_to_summary_button;
@@ -240,6 +241,7 @@ $(function() {
 
     $quick_play_button = $("#quick-play");
     $start_quest_button = $("#start-quest");
+    $begin_quest_button = $("#begin-quest");
     $challenge_friend_button = $("#challenge-friend");
     $back_to_start_button = $("#back-to-start");
     $back_to_summary_button = $("#back-to-summary");
@@ -268,6 +270,10 @@ $(function() {
 
     $start_quest_button.click(function() {
         hasher.setHash("quest");
+    });
+    
+    $begin_quest_button.click(function() {
+        hasher.setHash("game");
     });
 
     $challenge_friend_button.click(function() {
