@@ -159,7 +159,8 @@ function choice_clicked() {
         $points_won.text(current_question_value);
         $game_score.text(current_score);
 
-        next_turn();
+        $turn_mode.hide();
+        $after_turn_mode.show();
     // Wrong answer
     } else {
         clearTimeout(countdown_timer);
