@@ -46,6 +46,7 @@ crossroads.addRoute('game', function() {
     clear_screen();
 
     current_turn = 0;
+    current_score = 0;
     $turn_count.text(QUESTIONS.length);
 
     next_turn();
