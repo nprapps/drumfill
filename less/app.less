@@ -8,10 +8,20 @@ body {
     color: #111; 
     background-color: #e0e0e0;
 }
-h1 { font: normal 32px/1.125 Georgia, serif; margin: 0 0 22px 0; }
-h2 { font-weight: normal; line-height: 1.2; color: #333; margin-bottom: 22px; font-size: 22px; }
+h1 { 
+    font: normal 32px/1.125 Georgia, serif; 
+    margin: 0 0 22px 0;
+}
+h2 { 
+    font: normal 38px/1.2 Georgia, serif;
+    color: #333;
+    margin: 0 0 22px 0;
+}
 h3, h4, h5, h6 { font-weight: normal; line-height: 1.2; color: #999; margin-bottom: 22px; }
-p { margin-bottom: 1.3em; }
+p { 
+    margin: 0 0 22px 0;
+    color: #555;
+}
 a, a:link, a:visited { color: #4774cc; text-decoration: none; }
 a:hover, a:active { color: #bccae5; text-decoration: none; }
 .btn.btn-blue, a.btn.btn-blue {
@@ -61,8 +71,7 @@ section {
         margin: 0 0 22px 0;
     }
     p {
-        color: #555;
-        margin: 0 0 33px 0;
+        margin-bottom: 33px;
     }
     .npr {
         margin: 0 0 11px 0;
@@ -72,13 +81,19 @@ section {
 #game-screen {
     position: relative;
 
-    h2, #round-status {
+    h4, #round-status {
         font-size: 12px;
         font-weight: bold;
         color: #787878;
+        line-height: 1.2;
     }
-    h2 {
+    h4 {
         margin: 0 0 11px 0;
+    }
+    #round-status {
+        position: absolute;
+        top: 0; 
+        right: 0;
     }
     #audio {
         .jp-audio {
@@ -121,17 +136,6 @@ section {
             line-height: 22px;
         }
     }
-    #game-buttons {
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-        }
-    }
-    #round-status {
-        position: absolute;
-        top: 60px; right: 0;
-    }
     #story-info {
         margin-bottom: 11px;
 
@@ -149,7 +153,7 @@ section {
     }
 }
 
-.game-header {
+#game-header {
     margin: 0 -20px 22px -20px;
     background-color: #444D58;
     font-size: 14px;

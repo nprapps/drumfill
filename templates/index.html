@@ -7,6 +7,13 @@
 {% endblock %}
 
 {% block wide_content %}
+<!-- TODO: HIDE THIS WHEN #HOME-SCREEN IS ACTIVE -->
+<!-- TODO: LINK HEADER TO #HOME-SCREEN (or not) -->
+<nav id="game-header">
+    <img src="img/npr_75x25.png" alt="NPR" />
+    <h3>Name That News</h3>
+</nav>
+
 <section id="home-screen">
     <div class="container">
         <div class="row">
@@ -25,12 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="span4">
-                <div class="game-header">
-                    <img src="img/npr_75x25.png" alt="NPR" />
-                    <h3>Name That News</h3>
-                </div>
-
-                <h2>Round 1: Random Stories</h2>
+                <h4>Round 1: Random Stories</h4>
                 <div id="round-status">
                     <span id="round-item">5</span> of 
                     <span id="round-total">10</span>
@@ -39,6 +41,7 @@
                 <div id="story-info">
                     <h3 id="story-title">Story Headline Goes Here</h3>
                     <p id="story-byline">Reporter: [Name Name]</p>
+                    <!-- TODO: only reveal program, airdate, duration after turn ends? -->
                     <p id="story-air">
                         <em><span id="story-program">Morning Edition</span></em>, 
                         <span id="story-date">April 20, 2010</span>
@@ -69,12 +72,10 @@
                 </div>
                 
                 <div id="game-buttons">
-                    <ul>
-                        <li><button class="btn btn-blue btn-large btn-block">Choice 1</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">Choice 2</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">Choice 3</button></li>
-                        <li><button class="btn btn-blue btn-large btn-block">Choice 4</button></li>
-                    </ul>
+                    <button class="btn btn-blue btn-large btn-block">Choice 1</button>
+                    <button class="btn btn-blue btn-large btn-block">Choice 2</button>
+                    <button class="btn btn-blue btn-large btn-block">Choice 3</button>
+                    <button class="btn btn-blue btn-large btn-block">Choice 4</button>
                 </div>
 
             </div>
@@ -87,7 +88,7 @@
         <div class="row">
             <div class="span4">
                 <h2>Quest screen!</h2>
-                <p>Blah blah</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
             </div>
         </div>
     </div>
@@ -98,9 +99,9 @@
         <div class="row">
             <div class="span4">
                 <h2>You're Done!</h2>
-                <p>Blah blah</p>
-                <button class="btn" id="challenge-friend">Challenge A Friend</button>
-                <button class="btn" id="back-to-start">Back To Start</button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <button class="btn btn-blue btn-large btn-block" id="challenge-friend">Challenge A Friend</button>
+                <button class="btn btn-blue btn-large btn-block" id="back-to-start">Back To Start</button>
             </div>
         </div>
     </div>
@@ -111,9 +112,9 @@
         <div class="row">
             <div class="span4">
                 <h2>Challenge A Friend!</h2>
-                <button class="btn">Twitter</button>
-                <button class="btn">Facebook</button>
-                <button class="btn" id="back-to-summary">Back To Summary</button>
+                <button class="btn btn-blue btn-large btn-block">Twitter</button>
+                <button class="btn btn-blue btn-large btn-block">Facebook</button>
+                <button class="btn btn-blue btn-large btn-block" id="back-to-summary">Back To Summary</button>
             </div>
         </div>
     </div>
