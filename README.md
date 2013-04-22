@@ -17,6 +17,13 @@ nprapps' Project Template
 * [Install cron jobs](#install-cron-jobs)
 * [Install web services](#install-web-services)
 
+What is this?
+-------------
+
+Our experimental NPR news quiz game built for Global Editor's Network / Editor's Lab hackathon at the New York Times.
+
+Not an official or finished NPR project.
+
 Assumptions
 -----------
 
